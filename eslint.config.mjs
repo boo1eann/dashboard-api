@@ -40,6 +40,7 @@ export default tseslint.config(
         "@typescript-eslint/explicit-function-return-type": [
             "warn"
         ],
+				"@typescript-eslint/no-empty-object-type": "off",
         "prettier/prettier": [
             "error",
             {

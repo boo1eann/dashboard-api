@@ -8,20 +8,23 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/main.js",
-		"dev": "nodemon",
-		"dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9229 -r ts-node/register src/main.ts",
+    "dev": "nodemon",
+    "dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9229 -r ts-node/register src/main.ts",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/** --fix",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.1",
     "express": "^5.1.0",
     "inversify": "^7.10.4",
     "reflect-metadata": "^0.2.2",
     "tslog": "^3.2.2"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.5",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@typescript-eslint/parser": "^8.48.0",
