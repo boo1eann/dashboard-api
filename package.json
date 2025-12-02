@@ -8,8 +8,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/main.js",
-		"lint": "eslint ./src/**",
-		"lint:fix": "eslint ./src/** --fix",
+		"dev": "nodemon",
+		"dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9229 -r ts-node/register src/main.ts",
+    "lint": "eslint ./src/**",
+    "lint:fix": "eslint ./src/** --fix",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +28,9 @@
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "nodemon": "^3.1.11",
     "prettier": "^3.7.3",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0"
   }
