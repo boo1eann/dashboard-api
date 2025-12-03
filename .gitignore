@@ -2,3 +2,5 @@
 /dist
 /.clinic
 /.env
+/prisma/dev.db
+/src/generated/prisma
