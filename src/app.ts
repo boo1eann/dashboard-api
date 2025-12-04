@@ -7,6 +7,8 @@ import { json } from 'body-parser';
 import { UserController } from './users/users.controller';
 import { IExeptionFilter } from './errors/exeption.filter.interface';
 import { PrismaService } from './database/prisma.service';
+import { AuthMiddleware } from './common/auth.middleware';
+import { IConfigService } from './config/config.service.interface';
 
 @injectable()
 export class App {
@@ -19,6 +21,7 @@ export class App {
 		@inject(TYPES.UserController) private userController: UserController,
 		@inject(TYPES.ExeptionFilter) private exeptionFilter: IExeptionFilter,
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
+		@inject(TYPES.ConfigService) private configService: IConfigService,
 	) {
 		this.app = express();
 		this.port = 8000;
@@ -26,6 +29,8 @@ export class App {
 
 	useMiddleware(): void {
 		this.app.use(json());
+		const authMiddleware = new AuthMiddleware(this.configService.get('SECRET'));
+		this.app.use(authMiddleware.execute.bind(authMiddleware));
 	}
 
 	useRoutes(): void {
